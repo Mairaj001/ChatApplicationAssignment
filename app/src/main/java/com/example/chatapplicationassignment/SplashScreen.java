@@ -1,5 +1,7 @@
 package com.example.chatapplicationassignment;
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -29,6 +31,7 @@ public class SplashScreen extends AppCompatActivity {
                     }else{
                         startActivity(new Intent(SplashScreen.this, LoginScreen.class));
                     }
+                    finish();
                 }
             }
 
