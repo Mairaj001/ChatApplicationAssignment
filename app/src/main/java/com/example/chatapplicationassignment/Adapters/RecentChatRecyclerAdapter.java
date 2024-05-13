@@ -43,13 +43,6 @@ public class RecentChatRecyclerAdapter extends FirestoreRecyclerAdapter<ChatRoom
                         UserModel otherUserModel = task.getResult().toObject(UserModel.class);
 
 
-                        FirebaseUtil.getOtherProfilePicStorageRef(otherUserModel.getUserId()).getDownloadUrl()
-                                .addOnCompleteListener(t -> {
-                                    if(t.isSuccessful()){
-                                        Uri uri  = t.getResult();
-                                        AndriodUtils.setProfilePic(context,uri,holder.profilePic);
-                                    }
-                                });
 
                         holder.usernameText.setText(otherUserModel.getUsername());
                         if(lastMessageSentByMe)

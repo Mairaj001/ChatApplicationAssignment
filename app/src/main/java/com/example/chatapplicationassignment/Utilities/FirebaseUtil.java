@@ -24,17 +24,7 @@ public class FirebaseUtil {
         return false;
     }
 
-    public static DocumentReference currentUserDetails(){
-        return FirebaseFirestore.getInstance().collection("users").document(currentUserId());
-    }
 
-    public static CollectionReference allUserCollectionReference(){
-        return FirebaseFirestore.getInstance().collection("users");
-    }
-
-    public static DocumentReference getChatroomReference(String chatroomId){
-        return FirebaseFirestore.getInstance().collection("chatrooms").document(chatroomId);
-    }
 
     public static CollectionReference getChatroomMessageReference(String chatroomId){
         return getChatroomReference(chatroomId).collection("chats");
@@ -48,9 +38,6 @@ public class FirebaseUtil {
         }
     }
 
-    public static CollectionReference allChatroomCollectionReference(){
-        return FirebaseFirestore.getInstance().collection("chatrooms");
-    }
 
     public static DocumentReference getOtherUserFromChatroom(List<String> userIds){
         if(userIds.get(0).equals(FirebaseUtil.currentUserId())){
@@ -64,19 +51,20 @@ public class FirebaseUtil {
         return new SimpleDateFormat("HH:MM").format(timestamp.toDate());
     }
 
-    public static void logout(){
-        FirebaseAuth.getInstance().signOut();
+    public static DocumentReference currentUserDetails(){
+        return FirebaseFirestore.getInstance().collection("users").document(currentUserId());
     }
 
-    public static StorageReference  getCurrentProfilePicStorageRef(){
-        return FirebaseStorage.getInstance().getReference().child("profile_pic")
-                .child(FirebaseUtil.currentUserId());
+    public static CollectionReference allUserCollectionReference(){
+        return FirebaseFirestore.getInstance().collection("users");
     }
 
-    public static StorageReference  getOtherProfilePicStorageRef(String otherUserId){
-        return FirebaseStorage.getInstance().getReference().child("profile_pic")
-                .child(otherUserId);
+    public static DocumentReference getChatroomReference(String chatroomId){
+        return FirebaseFirestore.getInstance().collection("chatrooms").document(chatroomId);
     }
+
+
+
 
 
 }
