@@ -15,6 +15,7 @@ import com.example.chatapplicationassignment.Adapters.RecentChatRecyclerAdapter;
 import com.example.chatapplicationassignment.Model.ChatRoom;
 import com.example.chatapplicationassignment.Utilities.FirebaseUtil;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
 
@@ -56,7 +57,7 @@ public class FragmentChat extends Fragment {
             adapter.notifyDataSetChanged();
     }
     private void setupRecyclerView() {
-        Query query = FirebaseUtil.allChatroomCollectionReference()
+        Query query = FirebaseFirestore.getInstance().collection("chatrooms")
                 .whereArrayContains("userIds",FirebaseUtil.currentUserId())
                 .orderBy("lastMessageTimestamp",Query.Direction.DESCENDING);
 

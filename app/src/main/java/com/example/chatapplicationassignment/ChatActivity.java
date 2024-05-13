@@ -62,13 +62,6 @@ public class ChatActivity extends AppCompatActivity {
             sendMessageToUser(message);
         });
 
-        FirebaseUtil.getOtherProfilePicStorageRef(otherUser.getUserId()).getDownloadUrl()
-                .addOnCompleteListener(t -> {
-                    if(t.isSuccessful()){
-                        Uri uri  = t.getResult();
-                        AndriodUtils.setProfilePic(this,uri,imageView);
-                    }
-                });
         backBtn.setOnClickListener((v)->{
             onBackPressed();
         });

@@ -34,8 +34,8 @@ android {
 
 dependencies {
 
-    // FirebaseUI for Firebase Realtime Database
-    implementation("com.firebaseui:firebase-ui-database:8.0.2")
+
+
 
     // FirebaseUI for Cloud Firestore
     implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
